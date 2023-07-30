@@ -1,0 +1,18 @@
+# Nama Workflows (Optional)
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+
+# Trigger
+on: [push]
+
+# Jobs
+jobs:
+  check-bats-version: # Jobs Name
+    runs-on: ubuntu-latest # Runner
+    steps: # steps
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3 # Install nodejs
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
